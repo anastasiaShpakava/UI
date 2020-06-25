@@ -7,6 +7,7 @@ import com.example.ui.repository.UserRepository;
 import com.example.ui.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -34,42 +35,43 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @SneakyThrows
     @Override
     public void changeStatus(Integer id, Status status) {
-Optional<User> userFromDB=userRepository.findById(id);
-        if (userFromDB.isPresent()){
-            userFromDB.get().setStatus(status);
-            save(userFromDB.get());
+        Optional<User> userFromDb = userRepository.findById(id);
+        if (userFromDb.isPresent()) {
+            userFromDb.get().setStatus(status);
+            save(userFromDb.get());
         } else {
             throw new ResourceNotFoundException("User with such id is not found");
         }
     }
 
+    @SneakyThrows
     @Override
     public User findByUserName(String userName) {
-       Optional<User> userFromDb= Optional.ofNullable(userRepository.findByUserName(userName));
-       if (userFromDb.isPresent()){
-          userFromDb.get();
-       }
-       return userFromDb.get();
+        Optional<User> userFromDb = Optional.ofNullable(userRepository.findByUserName(userName));
+        return Optional.of(userFromDb).get().orElseThrow(() -> new ResourceNotFoundException("User with such login is not found!"));
+
     }
 
+    @SneakyThrows
     @Override
     public User findById(Integer id) {
-        return null;
+        Optional<User> userFromDb = userRepository.findById(id);
+        return Optional.of(userFromDb).get().orElseThrow(() -> new ResourceNotFoundException("User with such login is not found!"));
     }
 
 
     @Override
     public List<User> findAll() {
-        return null;
+        return userRepository.findAll();
     }
 
     @Override
     public Page<User> findAllPagination(Pageable pageable) {
-        return null;
+        return userRepository.findAll(pageable);
     }
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        return null;
+        return null; //TODO
     }
 }
