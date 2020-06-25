@@ -1,6 +1,7 @@
 package com.example.ui.service;
 
 
+import com.example.ui.exception.ResourceNotFoundException;
 import com.example.ui.model.Status;
 import com.example.ui.model.entity.User;
 import org.springframework.data.domain.Page;
@@ -23,7 +24,7 @@ public interface UserService {
 
     User findByUserName(String userName);
 
-    User findById(String id);
+    User findById(Integer id);
 
     List<User> findAll();
 
