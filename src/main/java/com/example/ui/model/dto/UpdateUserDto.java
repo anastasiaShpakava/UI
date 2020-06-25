@@ -16,7 +16,7 @@ import javax.validation.constraints.Size;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class LoginUserDto {
+public class UpdateUserDto {
     private Integer id;
 
     @Size.List({
