@@ -2,6 +2,7 @@ package com.example.ui.service.impl;
 
 import com.example.ui.exception.ResourceNotFoundException;
 import com.example.ui.model.Status;
+import com.example.ui.model.dto.CustomUserDetails;
 import com.example.ui.model.entity.User;
 import com.example.ui.repository.UserRepository;
 import com.example.ui.service.UserService;
@@ -71,7 +72,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        return null; //TODO
+    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+        User user=userRepository.findByUserName(userName);
+        return CustomUserDetails.fromUserEntityToCustomUserDetails(user);
     }
 }
