@@ -19,7 +19,7 @@ public class CustomUserDetails implements UserDetails {
     private static final String ROLE_PREFIX = "ROLE_";
 
 
-    private Collection<? extends GrantedAuthority> grantedAuthorities;  //интерфейс для доступов пользователя
+    private Collection<? extends GrantedAuthority> grantedAuthorities;  // user access interface
 
     public static CustomUserDetails fromUserEntityToCustomUserDetails(User user) {
         CustomUserDetails customUserDetails = new CustomUserDetails();
