@@ -75,5 +75,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         User user=userRepository.findByUserName(userName);
         return CustomUserDetails.fromUserEntityToCustomUserDetails(user);
+        //Here I get from DB User by login, convert it in CustomUser and return
     }
 }
