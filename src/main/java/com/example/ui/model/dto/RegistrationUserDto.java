@@ -6,12 +6,9 @@ import com.example.ui.model.Status;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.UniqueElements;
 
-import javax.persistence.Column;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import java.time.LocalDateTime;
+
+
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
