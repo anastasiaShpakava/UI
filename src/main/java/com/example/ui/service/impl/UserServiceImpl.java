@@ -60,7 +60,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return Optional.of(userFromDb).get().orElseThrow(() -> new ResourceNotFoundException("User with such login is not found!"));
     }
 
-
     @Override
     public List<User> findAll() {
         return userRepository.findAll();
